@@ -86,18 +86,6 @@ python -m scripts.run_pipeline
 python -m scripts.predict --customer C00042 --date 2024-10-06
 ```
 
-### 3. Docker Usage
-
-```bash
-# Build the image
-docker build -t coreloops-predict .
-
-# Run pipeline
-docker run coreloops-predict python -m scripts.run_pipeline
-
-# Make prediction
-docker run coreloops-predict --customer C00042 --date 2024-10-06
-```
 
 ## Design Decisions
 
@@ -170,7 +158,16 @@ docker run coreloops-predict --customer C00042 --date 2024-10-06
 - Primary: RMSE (penalizes large errors)
 - Secondary: MAE (interpretable in GBP)
 - R² score for explained variance
-
+- ✓ Training samples: 603
+- ✓ Test samples: 160
+- ✓ Features: 41
+- ✓ Test MAE: £22.95
+- ✓ Test RMSE: £37.20
+- ✓ Test R²: 0.8676
+- ✓ Train MAE: £17.37
+- ✓ Train RMSE: £26.19
+- ✓ Train R²: 0.9355
+ 
 ### Production Considerations
 
 1. **Modularity:** Clear separation of ETL, feature engineering, and ML
@@ -194,25 +191,7 @@ docker run coreloops-predict --customer C00042 --date 2024-10-06
 - **Model Training:** ~5s on typical dataset size
 - **Prediction:** <100ms per customer-date pair
 
-## Future Enhancements
-
-1. Incremental processing (append-only for new daily files)
-2. Model retraining pipeline with drift detection
-3. Multi-step ahead forecasting (7-day, 30-day predictions)
-4. Customer segmentation for segment-specific models
-5. API endpoint for batch predictions
-6. Monitoring dashboard for data quality metrics
-
-## Dependencies
-
-See `requirements.txt` for full list. Key packages:
-- `pandas` - Data manipulation
-- `polars` - Fast data processing (alternative)
-- `lightgbm` - Gradient boosting model
-- `scikit-learn` - ML utilities
-- `requests` - HTTP client for GCS
-- `pyarrow` - Parquet support
 
 ## Contact
 
-For questions or issues, please contact the development team.
+For questions or issues, please reach out on git.

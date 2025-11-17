@@ -48,7 +48,7 @@ logs/
 stub/
 coreloopsenv/
 # Data artifacts (don't commit large files)
-# artifacts/
+artifacts/
 # data/
 *.parquet
 *.csv
