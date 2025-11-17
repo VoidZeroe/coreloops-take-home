@@ -44,19 +44,20 @@ htmlcov/
 
 # Logs
 *.log
-logs/
+# logs/
 stub/
+data/
 coreloopsenv/
 # Data artifacts (don't commit large files)
-artifacts/
+# artifacts/
 # data/
-*.parquet
-*.csv
+# *.parquet
+# *.csv
 
 # OS
 .DS_Store
 Thumbs.db
 
 # Model files (optional - can be large)
-*.joblib
+# *.joblib
 *.pkl
